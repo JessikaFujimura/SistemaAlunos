@@ -13,7 +13,7 @@ namespace CursoMVC.Models
 	
 		public Context(DbContextOptions<Context> options) : base(options)
 		{ }
-		public void SetModified(object entity)
+		public virtual void SetModified(object entity)
         {
             Entry(entity).State = EntityState.Modified;
         }

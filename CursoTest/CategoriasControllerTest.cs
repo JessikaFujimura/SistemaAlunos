@@ -19,7 +19,11 @@ namespace CursoTest
         public CategoriasControllerTest()
         {
             _mockSet = new Mock<DbSet<Categoria>>();
-            _mockContext = new Mock<Context>();
+
+            var builder = new DbContextOptionsBuilder<Context>();
+            var options = builder.Options;
+
+            _mockContext = new Mock<Context>(options);
             _categoria = new Categoria { Id = 1, Descricao = "Teste Categoria" };
 
             _mockContext.Setup(m => m.Categorias).Returns(_mockSet.Object);
